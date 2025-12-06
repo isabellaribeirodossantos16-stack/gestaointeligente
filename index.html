@@ -3,31 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- CSP permissive for CDN usage and GitHub Pages compatibility -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;">
+
     <title>GestorPro - CRM</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            animation: {
-              'blink-red': 'blink-red 1s infinite',
-              'blink-orange': 'blink-orange 1.5s infinite',
-            },
-            keyframes: {
-              'blink-red': {
-                '0%, 100%': { borderColor: 'transparent', boxShadow: 'none' },
-                '50%': { borderColor: '#ef4444', boxShadow: '0 0 10px #ef4444' },
-              },
-              'blink-orange': {
-                '0%, 100%': { borderColor: 'transparent', boxShadow: 'none' },
-                '50%': { borderColor: '#f97316', boxShadow: '0 0 10px #f97316' },
-              }
-            }
-          }
-        }
-      }
-    </script>
+    
+    <!-- Fix CSS Compatibility Warning -->
     <style>
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
       /* Custom Scrollbar for better aesthetics */
       ::-webkit-scrollbar {
         width: 8px;
@@ -44,7 +30,45 @@
         background: #64748b; 
       }
     </style>
-  <script type="importmap">
+
+    <!-- Suppress Tailwind Production Warning in Console -->
+    <script>
+      const originalWarn = console.warn;
+      console.warn = (...args) => {
+        if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com should not be used in production')) return;
+        originalWarn(...args);
+      };
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              'blink-red': 'blink-red 1s infinite',
+              'blink-orange': 'blink-orange 1.5s infinite',
+              'fade-in': 'fadeIn 0.5s ease-in-out',
+            },
+            keyframes: {
+              'blink-red': {
+                '0%, 100%': { borderColor: 'transparent', boxShadow: 'none' },
+                '50%': { borderColor: '#ef4444', boxShadow: '0 0 10px #ef4444' },
+              },
+              'blink-orange': {
+                '0%, 100%': { borderColor: 'transparent', boxShadow: 'none' },
+                '50%': { borderColor: '#f97316', boxShadow: '0 0 10px #f97316' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <script type="importmap">
 {
   "imports": {
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
@@ -52,14 +76,16 @@
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
     "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.10.1",
     "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "react": "https://aistudiocdn.com/react@^19.2.1"
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "vite": "https://aistudiocdn.com/vite@^7.2.6",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body class="bg-gray-50 text-slate-800 antialiased">
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <!-- Entry Point Script: USING RELATIVE PATH ./ IS MANDATORY FOR GITHUB PAGES -->
+    <script type="module" src="./index.tsx"></script>
+  </body>
 </html>
