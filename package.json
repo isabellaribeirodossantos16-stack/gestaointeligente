@@ -1,7 +1,7 @@
 {
-  "name": "19.1-gestorpro---crm-&-financeiro",
+  "name": "gestor-pro-crm",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,18 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react-dom": "^19.2.1",
-    "lucide-react": "^0.556.0",
-    "@google/genai": "^1.31.0",
-    "react-router-dom": "^7.10.1",
     "react": "^19.2.1",
-    "vite": "^7.2.6",
-    "@vitejs/plugin-react": "^5.1.1"
+    "react-dom": "^19.2.1",
+    "react-router-dom": "^7.10.1",
+    "lucide-react": "^0.556.0",
+    "@google/genai": "^1.31.0"
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "@types/react": "^19.2.1",
+    "@types/react-dom": "^19.2.1",
+    "@vitejs/plugin-react": "^5.1.1",
+    "typescript": "^5.7.2",
+    "vite": "^7.2.6"
   }
 }

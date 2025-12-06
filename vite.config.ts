@@ -5,8 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   // A configuração 'base: "./"' é CRUCIAL para o GitHub Pages.
-  // Ela garante que os arquivos (js/css) sejam buscados relativamente à pasta atual,
-  // e não na raiz do domínio, resolvendo o problema da tela branca.
+  // Ela garante que os arquivos (js/css) sejam buscados relativamente à pasta atual.
   base: './', 
   server: {
     port: 3000,
