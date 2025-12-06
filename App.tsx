@@ -214,6 +214,8 @@ const AppContent = () => {
             />
             <Route path="/mensagens" element={<MessageTemplates />} />
             <Route path="/configuracoes" element={<Settings />} />
+            {/* Catch-all route to redirect to home if path doesn't exist */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
       </main>
